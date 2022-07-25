@@ -1,0 +1,181 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model DashboardUser {
+  id String @id @default(uuid())
+
+  firstName String
+  lastName  String
+  email     String  @unique
+  password  String
+  avatarUrl String?
+
+  posts      Post[]
+  roles      Role[]
+  userTokens DashboardUserToken[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("dashboard_users")
+}
+
+model BlogUser {
+  id String @id @default(uuid())
+
+  name String
+  email     String  @unique
+  password  String?
+  avatarUrl String?
+
+  views View[]
+  likes Like[]
+  comments Comment[]
+  userTokens BlogUserToken[]
+
+  githubId String? @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blog_users")
+}
+
+model Role {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  // user   DashboardUser?   @relation(fields: [userId], references: [id])
+  // userId String?
+  users DashboardUser[]
+
+  createdAt DateTime @default(now())
+
+  @@map("roles")
+}
+
+model Post {
+  id String @id @default(uuid())
+
+  title     String
+  subtitle  String
+  content   String
+  bannerUrl String
+  slug      String
+  isDraft   Boolean @default(false)
+
+  views    View[]
+  comments Comment[]
+  likes    Like[]
+
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+
+  author   DashboardUser?   @relation(fields: [authorId], references: [id]) 
+  authorId String?
+
+  createdAt DateTime @default(now())
+
+  @@map("posts")
+}
+
+model View {
+  id String @id @default(uuid())
+
+  ipAdress String
+
+  user   BlogUser?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+
+  @@map("views")
+}
+
+model Category {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  posts Post[]
+
+  createdAt DateTime @default(now())
+
+  @@map("categories")
+}
+
+model Comment {
+  id String @id @default(uuid())
+
+  content String
+
+  user  BlogUser?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+
+  createdAt DateTime @default(now())
+
+  @@map("comments")
+}
+
+model Like {
+  id String @id @default(uuid())
+
+  user  BlogUser?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+
+  createdAt DateTime @default(now())
+
+  @@map("likes")
+}
+
+model DashboardUserToken {
+  id String @id @default(uuid())
+
+  refresh_token String
+  expires_date DateTime
+
+  user   DashboardUser?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  created_at DateTime @default(now())
+
+  @@map("dashboard_user_tokens")
+}
+
+model BlogUserToken {
+  id String @id @default(uuid())
+
+  refresh_token String
+  expires_date DateTime
+
+  user   BlogUser?   @relation(fields: [userId], references: [id])
+  userId String?
+
+  created_at DateTime @default(now())
+
+  @@map("user_tokens")
+}
+
+model NewsletterSubscriber {
+  id String @id @default(uuid())
+
+  email String
+
+  created_at DateTime @default(now())
+
+  @@map("newsletter_subscriber")
+}
