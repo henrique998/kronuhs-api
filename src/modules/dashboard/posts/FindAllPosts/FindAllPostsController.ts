@@ -4,7 +4,7 @@ import { FindAllPostsUseCase } from "./FindAllPostsUseCase";
 
 class FindAllPostsController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { page = 1, per_page = 6 } = req.query;
+    const { page = 1, per_page = 10 } = req.query;
 
     const findAllPostsUseCase = container.resolve(FindAllPostsUseCase);
 
@@ -18,7 +18,10 @@ class FindAllPostsController {
 
     res.setHeader('x-total-count', String(total));
 
-    return res.json(postsResponse);
+    return res.json({
+      postsResponse,
+      total
+    });
   }
 }
 export { FindAllPostsController };

@@ -6,7 +6,7 @@ class CreatePostController {
   async handle(req: Request, res: Response): Promise<Response> {
     const { id } = req.user;
     const { title, subtitle, content, categoryId, isDraft = false  } = req.body;
-    const banner_file = req.file?.filename;
+    const banner_file = req.file;
 
     const createPostUseCase = container.resolve(CreatePostUseCase);
 
@@ -14,10 +14,10 @@ class CreatePostController {
       title,
       subtitle,
       content,
-      bannerUrl: banner_file,
+      bannerUrl: banner_file?.filename,
       authorId: id,
       categoryId,
-      isDraft: Boolean(isDraft)
+      isDraft: isDraft === 'true'
     });
 
     return res.json({ message: "Post created successfuly!" });

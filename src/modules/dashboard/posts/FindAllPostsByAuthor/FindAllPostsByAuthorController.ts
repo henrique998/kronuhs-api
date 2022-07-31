@@ -5,7 +5,7 @@ import { FindAllPostsByAuthorUseCase } from "./FindAllPostsByAuthorUseCase";
 
 class FindAllPostsByAuthorController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { page = 1, per_page = 6 } = req.query;
+    const { page = 1, per_page = 10 } = req.query;
     const { id : authorId } = req.user;
 
     const findAllPostsByCategoryUseCase = container.resolve(FindAllPostsByAuthorUseCase);
@@ -18,7 +18,10 @@ class FindAllPostsByAuthorController {
 
     res.setHeader('x-total-count', String(total));
 
-    return res.json(posts);
+    return res.json({
+      posts,
+      total
+    });
   }
 }
 

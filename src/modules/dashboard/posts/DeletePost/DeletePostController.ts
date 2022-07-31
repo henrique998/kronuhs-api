@@ -4,13 +4,13 @@ import { DeletePostUseCase } from './DeletePostUseCase';
 
 class DeletePostController {
   async handle(req: Request, res: Response): Promise<Response> {
-     const { id: postId } = req.params;
+    const { id: postId } = req.params;
 
-     const deletePostUseCase = container.resolve(DeletePostUseCase);
+    const deletePostUseCase = container.resolve(DeletePostUseCase);
 
-     await deletePostUseCase.execute(postId);
+    await deletePostUseCase.execute(postId);
 
-     return res.status(204).send();
+    return res.status(204).send();
   }
 }
 export { DeletePostController };

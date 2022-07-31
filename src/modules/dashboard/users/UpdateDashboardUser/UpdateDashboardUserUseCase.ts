@@ -4,9 +4,9 @@ import { IDashboardUsersRepository } from "../../../../repositories/dashboardUse
 
 interface IRequest {
   id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
 }
 
 @injectable()
@@ -17,17 +17,17 @@ class UpdateDashboardUserUseCase {
   ) {}
 
   async execute({ id, firstName, lastName, email }: IRequest): Promise<void> {
-    const user = await this.usersRepository.findUserById(id);
-
-    if (!email) {
-      throw new AppError("e-mail is required!");
+    if (!id) {
+      throw new AppError("user id is required!");
     }
+
+    const user = await this.usersRepository.findUserById(id);
 
     await this.usersRepository.update({
       id,
-      firstName,
-      lastName,
-      email
+      firstName: !firstName ? user.firstName : firstName,
+      lastName: !lastName ? user.lastName : lastName,
+      email: !email ? user.email : email
     });
   }
 }

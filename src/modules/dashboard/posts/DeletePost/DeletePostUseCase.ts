@@ -5,8 +5,8 @@ import { IPostsRepository } from '../../../../repositories/posts/IPostsRepositor
 @injectable()
 class DeletePostUseCase {
   constructor(
-  @inject('PrismaPostsRepository')
-  private postsRepository: IPostsRepository
+    @inject('PrismaPostsRepository')
+    private postsRepository: IPostsRepository
   ) {}
 
   async execute(postId: string): Promise<void> {
