@@ -19,7 +19,13 @@ interface PostDataDTO {
     userId: string;
     postId: string;
   }[];
+  views?: {
+    ipAdress: string;
+    userId?: string;
+    postId: string;
+  }[];
   category?: {
+    id: string;
     name: string;
   };
   author?: {

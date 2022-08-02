@@ -53,6 +53,7 @@ class PrismaPostsRepository implements IPostsRepository {
         },
         category: {
           select: {
+            id: true,
             name: true
           }
         },
@@ -111,6 +112,7 @@ class PrismaPostsRepository implements IPostsRepository {
         },
         category: {
           select: {
+            id: true,
             name: true
           }
         },
@@ -156,6 +158,7 @@ class PrismaPostsRepository implements IPostsRepository {
         },
         category: {
           select: {
+            id: true,
             name: true
           }
         },
@@ -196,6 +199,13 @@ class PrismaPostsRepository implements IPostsRepository {
             postId: true
           }
         },
+        views: {
+          select: {
+            ipAdress: true,
+            userId: true,
+            postId: true,
+          }
+        },
         author: {
           select: {
             firstName: true,
@@ -205,6 +215,7 @@ class PrismaPostsRepository implements IPostsRepository {
         },
         category: {
           select: {
+            id: true,
             name: true
           }
         },

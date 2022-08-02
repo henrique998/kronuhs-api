@@ -12,6 +12,7 @@ class PostMap {
     author,
     comments,
     likes,
+    views,
     category,
     _count,
     createdAt,
@@ -45,7 +46,15 @@ class PostMap {
           postId: like.postId
         }
       }),
+      views: views.map(view => {
+        return {
+          ipAdress: view.ipAdress,
+          userId: view.userId,
+          postId: view.postId,
+        }
+      }),
       category: {
+        id: category.id,
         name: category.name 
       },
       _count: {

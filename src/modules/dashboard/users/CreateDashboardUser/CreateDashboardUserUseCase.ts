@@ -55,9 +55,9 @@ class CreateDashboardUserUseCase {
     const passwordHash = await hash(password, 8);
 
     await this.usersRepository.create({ 
-      firstName, 
+      firstName,
       lastName,
-      email, 
+      email,
       password: passwordHash,
       avatar_url: avatarFile,
       roleId
@@ -72,7 +72,8 @@ class CreateDashboardUserUseCase {
     const templatePath = resolve(__dirname, ".", "templates", "emails", "sendPasswordAccount.hbs")
 
     await this.mailProvider.sendMail(
-      email, "Senha para acessar o painel de controle",
+      email,
+      "Senha para acessar o painel de controle",
       variables,
       templatePath
     )
