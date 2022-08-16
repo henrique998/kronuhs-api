@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.svg" />
+  <img src="logo.svg" width="100px" />
   <h3>Uma solução backend para blogs.</h3>
 </div>
 
