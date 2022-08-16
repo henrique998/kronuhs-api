@@ -18,7 +18,7 @@ categoryRoute.get("/", findAllCategoriesController.handle);
 categoryRoute.post(
 "/", 
 ensureDashboardUserAuthenticated, 
-is(["admin", "editor"]),
+is(["admin"]),
 createCategoryController.handle);
 
 categoryRoute.delete(
