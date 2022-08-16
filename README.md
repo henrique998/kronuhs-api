@@ -3,9 +3,6 @@
   <h3>Uma solução backend para blogs.</h3>
 </div>
 
-<br />
-<br />
-
 ## 📃 Sobre
 
 <br />
