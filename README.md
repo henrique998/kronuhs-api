@@ -11,8 +11,6 @@ A **Kronuhs-Api** foi desenvolvida seguindo os princípios SOLID tendo como foco
 
 Esta aplicação tem diversas funcionalidades que são bem úteis no dia a dia de um desenvolvedor que você poderá descobrir logo abaixo.
 
-<br />
-
 ## 💻 Principais Tecnologias utilizadas no projeto
 
 Este projeto utiliza diversas tecnologias bem legais e úteis que você talvez possa gostar e utilizar em alguns projetos.
@@ -29,8 +27,6 @@ Este projeto utiliza diversas tecnologias bem legais e úteis que você talvez p
 - [Nodemailer](https://nodemailer.com/about/)
 - [Tsyringe](https://www.npmjs.com/package/tsyringe)
 - [Turndown](https://www.npmjs.com/package/turndown)
-
-<br />
 
 ## Funcionalidades
 
@@ -64,8 +60,6 @@ Este projeto possui diversas funcionalidades úteis em um blog que você pode co
 
 - Upload de imagens
 
-<br />
-
 ## Como executar o projeto na sua máquina
 
 <br />
@@ -79,8 +73,6 @@ Primeiro clone o repositório do projeto com o comando:
 ```bash
 git clone git@github.com:henrique998/kronuhs-api.git
 ```
-
-<br />
 
 Execute um dos comando abaixo para instalar as dependências do projeto:
 
@@ -106,8 +98,6 @@ npx prisma db seed
 yarn prisma db seed
 ```
 
-<br />
-
 Após isso execute:
 
 
@@ -118,8 +108,6 @@ npm run dev
 
 yarn dev
 ```
-
-<br />
 
 E tudo deverá estar funcionando como o esperado. você deverá receber a seguinte mensagem no terminal:
 
@@ -146,8 +134,6 @@ As Crendenciais são:
 2. Password: 123456
 
 Não se preocupe, você poderá alterar esses dados após acessar a sua conta no painel.
-
-<br />
 
 ## Contato
 
